@@ -19,8 +19,6 @@ const styles = {
     paddingTop: 35,
     paddingBottom: 15,
     shadowColor: "#000",
-    shadowOffese: { width: 0, height: 2 },
-    shadowOppacity: 0.5,
     elevation: 2,
     position: "relative"
   },
