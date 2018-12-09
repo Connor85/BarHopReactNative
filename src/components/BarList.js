@@ -31,12 +31,9 @@ class BarList extends Component {
   }
 
   renderBars = () => {
-    console.log(this.state.bars.businesses);
-    if (this.state.bars.businesses) {
-      return this.state.bars.businesses.map(bar => (
-        <BarDetails key={bar.name} bar={bar} />
-      ));
-    }
+    return this.state.bars.businesses.map(bar => (
+      <BarDetails key={bar.name} bar={bar} />
+    ));
   };
 
   render() {
@@ -49,4 +46,4 @@ class BarList extends Component {
   }
 }
 
-export default RestaurantList;
+export default BarList;

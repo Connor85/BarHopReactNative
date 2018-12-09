@@ -3,8 +3,8 @@ import { Text, View, Image } from "react-native";
 import Card from "./Card";
 import CardSection from "./CardSection";
 
-const BarDetails = ({ bar }) => {
-  const { name, rating, image_url } = bar;
+const BarDetails = ({ businesses }) => {
+  const { name, rating, image_url } = businesses;
 
   return (
     <Card>
@@ -14,9 +14,6 @@ const BarDetails = ({ bar }) => {
         </View>
         <View style={styles.headerContentStyle}>
           <Text>{name}</Text>
-          <Text>
-            {rating} <Emoji name="pizza" style={{ fontSize: 15 }} />
-          </Text>
         </View>
       </CardSection>
     </Card>
