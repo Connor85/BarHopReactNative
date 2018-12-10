@@ -8,6 +8,9 @@
 
 _This React Native application allows users to see which bars they can uber to for a predetermined price. The user enters how much money they are willing to spend on an uber and the app return a list of bars_
 
+## Diagram
+![diagram](./diagram.png)
+
 ## Setup/Installation Requirements
 
 - Clone the repository
