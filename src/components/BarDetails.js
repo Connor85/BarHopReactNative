@@ -3,9 +3,8 @@ import { Text, View, Image } from "react-native";
 import Card from "./Card";
 import CardSection from "./CardSection";
 
-const BarDetails = ({ businesses }) => {
-  const { name, rating, image_url } = businesses;
-
+const BarDetails = ({ bar }) => {
+  const { name, rating, image_url } = bar;
   return (
     <Card>
       <CardSection>
@@ -14,6 +13,9 @@ const BarDetails = ({ businesses }) => {
         </View>
         <View style={styles.headerContentStyle}>
           <Text>{name}</Text>
+        </View>
+        <View style={styles.headerContentStyle}>
+          <Text>{rating}</Text>
         </View>
       </CardSection>
     </Card>

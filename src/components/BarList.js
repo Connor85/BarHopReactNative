@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import axios from "axios";
 import BarDetails from "./BarDetails";
 
 const config = {
   headers: {
-    Authorization:
-      "htx0mJlJSr5cMCeV14i8G4Zg81Gl-fxCd2UibV5BSMt1PHpoDJKEjR49MXhQc2cAVNBVpGu6A-ApUkuHTUSfDWYxzbRR1hByDdGjnCeBnGYbIIiG7awrCLVSMeHHW3Yx"
+    Authorization: "Bearer API_KEY"
   },
   params: {
-    term: "600 1st Ave, Seattle, WA",
-    location: "bar",
+    term: "pizza",
+    location: "98105",
     sort_by: "distance"
   }
 };
@@ -32,9 +31,12 @@ class BarList extends Component {
   }
 
   renderBars = () => {
-    return this.state.bars.businesses.map(bar => (
-      <BarDetails key={bar.id} bar={bar} />
-    ));
+    console.log(this.state.bars.businesses);
+    if (this.state.bars.businesses) {
+      return this.state.bars.businesses.map(bar => (
+        <BarDetails key={bar.id} bar={bar} />
+      ));
+    }
   };
 
   render() {
