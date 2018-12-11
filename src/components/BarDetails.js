@@ -4,19 +4,17 @@ import Card from "./Card";
 import CardSection from "./CardSection";
 
 const BarDetails = ({ bar }) => {
-  const { name, rating, image_url } = bar;
+  const { name, categories, image_url } = bar;
   return (
     <Card>
       <CardSection>
-        <View>
-          <Image style={styles.thumbnailStyle} source={{ uri: image_url }} />
-        </View>
         <View style={styles.headerContentStyle}>
-          <Text>{name}</Text>
+          <Text style={styles.headerTextStyle}>{name}</Text>
+          <Text>{categories[0].alias}</Text>
         </View>
-        <View style={styles.headerContentStyle}>
-          <Text>{rating}</Text>
-        </View>
+      </CardSection>
+      <CardSection>
+        <Image style={styles.imageStyle} source={{ uri: image_url }} />
       </CardSection>
     </Card>
   );
@@ -25,11 +23,20 @@ const BarDetails = ({ bar }) => {
 const styles = {
   headerContentStyle: {
     flexDirection: "column",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    marginLeft: 10
   },
-  thumbnailStyle: {
-    height: 50,
-    width: 50
+  headerTextStyle: {
+    fontSize: 18
+  },
+  thumbnailContainerStyle: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  imageStyle: {
+    height: 300,
+    flex: 1,
+    width: null
   }
 };
 

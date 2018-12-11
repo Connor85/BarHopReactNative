@@ -5,10 +5,10 @@ import BarDetails from "./BarDetails";
 
 const config = {
   headers: {
-    Authorization: "Bearer API_KEY"
+    Authorization: "Bearer API KEY"
   },
   params: {
-    term: "pizza",
+    term: "bar",
     location: "98105",
     sort_by: "distance"
   }
