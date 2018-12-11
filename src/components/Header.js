@@ -16,14 +16,15 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     height: 60,
-    paddingTop: 35,
+    paddingTop: 50,
     paddingBottom: 15,
     shadowColor: "#000",
     elevation: 2,
     position: "relative"
   },
   textStyle: {
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: "700"
   }
 };
 export default Header;

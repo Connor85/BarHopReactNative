@@ -1,20 +1,27 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Linking } from "react-native";
 import Card from "./Card";
 import CardSection from "./CardSection";
+import Button from "./Button";
 
 const BarDetails = ({ bar }) => {
-  const { name, categories, image_url } = bar;
+  const { name, categories, rating, url, image_url } = bar;
   return (
     <Card>
       <CardSection>
         <View style={styles.headerContentStyle}>
           <Text style={styles.headerTextStyle}>{name}</Text>
           <Text>{categories[0].alias}</Text>
+          <Text>Rating: {rating}/5</Text>
         </View>
       </CardSection>
+
       <CardSection>
         <Image style={styles.imageStyle} source={{ uri: image_url }} />
+      </CardSection>
+
+      <CardSection>
+        <Button onPress={() => Linking.openURL(url)}>More Info</Button>
       </CardSection>
     </Card>
   );
@@ -27,11 +34,8 @@ const styles = {
     marginLeft: 10
   },
   headerTextStyle: {
-    fontSize: 18
-  },
-  thumbnailContainerStyle: {
-    justifyContent: "center",
-    alignItems: "center"
+    fontSize: 18,
+    textDecorationLine: "underline"
   },
   imageStyle: {
     height: 300,
