@@ -27,4 +27,4 @@ const styles = {
     fontWeight: "700"
   }
 };
-export default Header;
+export { Header };
