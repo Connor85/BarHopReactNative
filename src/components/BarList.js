@@ -5,7 +5,8 @@ import BarDetails from "./BarDetails";
 
 const config = {
   headers: {
-    Authorization: "Bearer API KEY"
+    Authorization:
+      "Bearer -nwISs2S4HyFHv_H-F8y7bsbSMwUSCuB7fyLQ9hkfwFWVfB8unrDw4p-d4Rdz1CIUewI2J1_bohzbQzkZG6_kuvnDey8ZWftvfEUQBqsw7uxZMI7EexVHxMl8sYOXHYx"
   },
   params: {
     term: "bar",
