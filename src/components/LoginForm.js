@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import firebase from "firebase";
 import { Button, CardSection, Card, Input, Spinner } from "./../common";
 
 class LoginForm extends Component {
-  state = { email: "", password: "", error: "", loading: false };
+  state = { email: "", password: "", error: "", loading: false, signUp: false };
 
-  onButtonPress() {
+  onLoginPress() {
     const { email, password } = this.state;
 
     this.setState({ error: "", loading: true });
@@ -15,20 +15,36 @@ class LoginForm extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(() => {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email, password)
-          .catch(() => {
-            this.setState({ error: "Authentication Failed" });
-          });
+        this.setState({ error: "Login Failed, please try again" });
       });
   }
 
-  renderButton() {
+  onSignUpPress() {
+    const { email, password } = this.state;
+
+    this.setState({ error: "", loading: true });
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(() => {
+        this.setState({ error: "Sign Up Failed, please try again" });
+      });
+  }
+
+  renderLoginButton() {
     if (this.state.loading === true) {
       return <Spinner size="small" />;
     } else {
-      return <Button onPress={this.onButtonPress.bind(this)}>Login</Button>;
+      return <Button onPress={this.onLoginPress.bind(this)}>Login</Button>;
+    }
+  }
+
+  renderSignUpButton() {
+    if (this.state.loading === true) {
+      return <Spinner size="small" />;
+    } else {
+      return <Button onPress={this.onSignUpPress.bind(this)}>Sign Up</Button>;
     }
   }
 
@@ -54,7 +70,10 @@ class LoginForm extends Component {
         </CardSection>
 
         <Text style={styles.errorTextStyle}>{this.state.error}</Text>
-        <CardSection>{this.renderButton()}</CardSection>
+        <CardSection>
+          {this.renderLoginButton()}
+          {this.renderSignUpButton()}
+        </CardSection>
       </Card>
     );
   }
