@@ -14,9 +14,8 @@ class LoginForm extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .catch(() => {
-        this.setState({ error: "Login Failed, please try again" });
-      });
+      .then(this.onSuccess.bind(this))
+      .catch(this.onFail.bind(this));
   }
 
   onSignUpPress() {
@@ -27,9 +26,21 @@ class LoginForm extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .catch(() => {
-        this.setState({ error: "Sign Up Failed, please try again" });
-      });
+      .then(this.onSuccess.bind(this))
+      .catch(this.onFail.bind(this));
+  }
+
+  onFail() {
+    this.setState({ error: "Authentication Failes", loading: false });
+  }
+
+  onSuccess() {
+    this.setState({
+      email: "",
+      password: "",
+      loading: false,
+      error: ""
+    });
   }
 
   renderLoginButton() {
@@ -70,10 +81,8 @@ class LoginForm extends Component {
         </CardSection>
 
         <Text style={styles.errorTextStyle}>{this.state.error}</Text>
-        <CardSection>
-          {this.renderLoginButton()}
-          {this.renderSignUpButton()}
-        </CardSection>
+        <CardSection>{this.renderLoginButton()}</CardSection>
+        <CardSection>{this.renderSignUpButton()}</CardSection>
       </Card>
     );
   }
