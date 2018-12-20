@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import { createStackNavigator } from "react-navigation";
 import firebase from "firebase";
-import { Header } from "./common";
+import { Header, Button } from "./common";
 import LoginForm from "./components/LoginForm";
+import Search from "./components/Search";
 
 class App extends Component {
   state = { loggedIn: false };
@@ -25,11 +25,20 @@ class App extends Component {
       }
     });
   }
+
+  renderSearch() {
+    if (this.state.loggedIn === true) {
+      return <Search />;
+    } else {
+      return <LoginForm />;
+    }
+  }
+
   render() {
     return (
       <View>
         <Header headerText="Bar Hop" />
-        <LoginForm />
+        {this.renderSearch()}
       </View>
     );
   }
