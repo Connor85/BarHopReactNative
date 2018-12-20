@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View } from "react-native";
+import { createStackNavigator } from "react-navigation";
 import firebase from "firebase";
 import { Header } from "./common";
 import LoginForm from "./components/LoginForm";
@@ -16,11 +17,11 @@ class App extends Component {
       messagingSenderId: "963492737971"
     });
 
-    firebase.auth().onAuthStateChanged((user){
-      if(user){
-        this.setState({loggedIn: true})
-      }else{
-        this.setState({loggedIn: false})
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
       }
     });
   }
